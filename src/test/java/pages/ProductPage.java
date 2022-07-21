@@ -9,6 +9,10 @@ import org.openqa.selenium.support.ui.Select;
 
 import utilities.Utility;
 
+/**
+ * @author ahmad.razaa
+ * This class contains all the selectors and functions related to the product's view page
+ */
 public class ProductPage {
 
     By productsPageId = By.id("canvasCaption");
@@ -21,23 +25,28 @@ public class ProductPage {
 
     WebDriver driver; 
 
+    /**
+     * Constructor
+     * @param driver
+     */
+
     public ProductPage(WebDriver driver) {
         this.driver = driver;
     }
+
+    /**
+     * Verifies if the product is displayed or not
+     */
 
     public void verifyProductsPageIsDisplayed() {
 
     }
 
-//    public float getPriceFromProductsPage(){
-//
-//        WebElement hatPrice = driver.findElement(PriceOnProductViewPage);
-//        String priceString = hatPrice.getText();
-//
-//        float price = Utility.convertStringToFloat(priceString);
-//        return price;
-//    }
-    
+    /**
+     * Observes and store the price of product displayed 
+     * @return {number} price
+     */
+
     public float getPriceFromProductsPage() {
 
         if(!driver.findElements(PriceOnProductViewPage).isEmpty()) {
@@ -62,6 +71,11 @@ public class ProductPage {
         }
     }
 
+    /**
+     * Chooses quantity for the product to be added in the cart
+     * @param {number} qty
+     */
+
     public void selectQuantity(int qty) {
 
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
@@ -69,14 +83,20 @@ public class ProductPage {
         select.selectByIndex(qty-1);
     }
 
-
-
+    /**
+     * Add products to the cart 
+     */
+    
     public void addToCart() {
 
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.findElement(btn_addToCart).click();
     }
 
+    /**
+     * Opens the cart
+     */
+    
     public void openCart() {
 
         driver.findElement(cartIcon).click();   

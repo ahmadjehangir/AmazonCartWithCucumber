@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="stepDefinitions.TestRunner" time="104.622" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="stepDefinitions.TestRunner" time="58.467" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_77\jre\bin"/>
@@ -65,10 +65,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="Test Amazon cart functionality" name="Validate Amazone search is working" time="28.136"/>
-  <testcase classname="Test Amazon cart functionality" name="Validate view product is working" time="12.815"/>
-  <testcase classname="Test Amazon cart functionality" name="Validate add a product to cart is working" time="5.119"/>
-  <testcase classname="Test Amazon cart functionality" name="Validate searching another product is working" time="36.895"/>
-  <testcase classname="Test Amazon cart functionality" name="Validate adding another product to the cart is working" time="9.034"/>
-  <testcase classname="Test Amazon cart functionality" name="Validate removing one men hat from the cart is working" time="12.623"/>
+  <testcase classname="Test Amazon cart functionality" name="Validate Amazone search is working" time="12.566"/>
+  <testcase classname="Test Amazon cart functionality" name="Validate view product is working" time="8.788"/>
+  <testcase classname="Test Amazon cart functionality" name="Validate add a product to cart is working" time="3.893"/>
+  <testcase classname="Test Amazon cart functionality" name="Validate searching another product is working" time="16.094"/>
+  <testcase classname="Test Amazon cart functionality" name="Validate adding another product to the cart is working" time="6.797"/>
+  <testcase classname="Test Amazon cart functionality" name="Validate removing one men hat from the cart is working" time="10.329"/>
 </testsuite>

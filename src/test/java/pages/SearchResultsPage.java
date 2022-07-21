@@ -7,6 +7,10 @@ import org.openqa.selenium.WebDriver;
 
 public class SearchResultsPage {
 
+    /**
+     * @author ahmad.razaa
+     * This class contains all the selectors and functions related to the Search results page
+     */
 
     private By searchText = By.xpath("//span[@class='a-color-state a-text-bold']");
     private By resultsPage = By.xpath("//*[contains(text(), 'RESULTS')]");
@@ -15,14 +19,29 @@ public class SearchResultsPage {
 
     WebDriver driver;
 
+    /**
+     * Constructor
+     * @param driver
+     */
+
     public SearchResultsPage(WebDriver driver) {
         this.driver = driver;
     }
+
+    /**
+     * Confirms if the results page is displayed or not
+     */
 
     public void verifyResultsPageIsDisplayed() {
 
         driver.findElement(resultsPage).isDisplayed();
     }
+
+    /**
+     * Verifies if the desired string is searched
+     * @param searchedString
+     */
+
     public void verifyTheSearchedString(String searchedString) {
         String actualText = driver.findElement(searchText).getText();
 
@@ -32,7 +51,9 @@ public class SearchResultsPage {
         }
     }
 
-
+    /**
+     * Clicks on a product
+     */
 
     public void clickOnProduct() {
 
@@ -41,7 +62,7 @@ public class SearchResultsPage {
 
 
         while(!driver.findElements(By.xpath("//SPAN[@class='a-color-price a-text-bold'][text()='Currently unavailable.' or ' Temporarily out of stock']")).isEmpty()){
-          //  System.out.println(!driver.findElements(By.xpath("//*[text()='Currently unavailable.' or text()='Temporarily out of stock.']")).isEmpty());
+            //  System.out.println(!driver.findElements(By.xpath("//*[text()='Currently unavailable.' or text()='Temporarily out of stock.']")).isEmpty());
 
             driver.findElement(searchButton).click();
             productNumber = productNumber + 1;
@@ -49,34 +70,6 @@ public class SearchResultsPage {
         }
     }
 
-
-
-
-
-
-
-
-
-    //        if(!driver.findElements(By.xpath("//*[text()='Currently unavailable.' or text()='Temporarily out of stock']")).isEmpty())
-    //        {
-    //            System.out.println("The cap is not currently availble. That's system is selecting the first available product");
-    //            
-    //            driver.findElement(searchButton).click();
-    //            
-    //            driver.findElement(secondProduct).click();
-    //            
-    //        }
-    //        else if(!driver.findElements(By.xpath("//*[text()='Currently unavailable.' or text()='Temporarily out of stock']")).isEmpty()) {
-    //            
-    //            driver.findElement(searchButton).click();
-    //            driver.findElement(thirdProduct).click();
-    //        }
-    //        
-    //       else {
-    //        
-    //           System.out.println("This product is also not available");
-    //        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-    //        }
 }
 
 

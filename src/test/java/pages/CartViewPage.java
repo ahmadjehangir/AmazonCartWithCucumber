@@ -8,6 +8,10 @@ import org.openqa.selenium.support.ui.Select;
 
 import utilities.Utility;
 
+/**
+ * @author ahmad.razaa
+ * This class contains all the selectors and functions related to the Cart page
+ */
 public class CartViewPage {
 
     By cart_sTotal = By.cssSelector("span[class='a-size-medium a-color-base sc-price sc-white-space-nowrap']");
@@ -20,11 +24,22 @@ public class CartViewPage {
 
     WebDriver driver = null;
 
+    /**
+     * Constructor
+     * @param driver
+     */
+    
     public CartViewPage(WebDriver driver) {
 
         this.driver = driver;
     }
 
+    /**
+     * Observes the sub-total of the cart
+     * Sometimes, the sub-total is displayed collectively and sometimes in chunks of whole & integer part
+     * @return {number} subTotal
+     */
+    
     public float getSubTotalOfCart() {
 
         if(!driver.findElements(cart_sTotal).isEmpty()) {
@@ -48,6 +63,11 @@ public class CartViewPage {
             return subTotal;
         }
     }
+    
+    /**
+     * Observes the total quantity present in the cart
+     * @return {number} quantity
+     */
 
     public int getQuantityInCart() {
         String qty = driver.findElement(quantityInCart).getText();
@@ -56,12 +76,21 @@ public class CartViewPage {
 
         return actualquantityInCart;
     }
+    
+    /**
+     * Confirms if the cart is opened or not
+     */
 
     public void checkIfCartPageIsVisible() {
 
         driver.findElement(cartPage).isDisplayed();
     }
 
+    /**
+     * Changes the quantity in the cart
+     * @param {number} qty
+     */
+    
     public void changeQuantityInCartforMenHat(int qty) {
 
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);

@@ -25,7 +25,13 @@ import pages.CartViewPage;
 import pages.ProductPage;
 import pages.SearchResultsPage;
 
-
+/**
+ * 
+ * @author ahmad.razaa
+ *
+ * This class contains the definitions for all the steps defined in the Features.cucumber file
+ * Some scenarios share a step. Those steps are defined only once in this file
+ */
 
 public class AmazonCartSteps {
 
@@ -38,36 +44,23 @@ public class AmazonCartSteps {
     static float priceOfOneWomenHat;
     float carSubTotal1;
 
+
+    /**
+     * Scenario 1:  Validate Amazon search is working
+     */
+
     @SuppressWarnings("deprecation")
     @Given("browser is open")
     public void browser_is_open() {
 
-         ChromeOptions options = new ChromeOptions();
-               options.setBinary("C:/Program Files/Google/Chrome Beta/Application/chrome.exe");
-          
-        //        LoggingPreferences logPrefs = new LoggingPreferences();
-        //        logPrefs.enable(LogType.BROWSER, java.util.logging.Level.SEVERE);
-        //        options.setCapability("goog:loggingPrefs", logPrefs);
-        //      
-        //        String projectPath =  System.getProperty("user.dir");
-        //        System.setProperty("webdriver.chrome.driver", projectPath+ "/src/test/resources/Drivers/chromedriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        options.setBinary("C:/Program Files/Google/Chrome Beta/Application/chrome.exe");
 
-        // System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\Drivers\\chromedriver.exe");
-        // options.addArguments("--headless", "--window-size=1368,768"); 
-        //options.addArguments("--incognito");
-        
+
 
         String projectPath =  System.getProperty("user.dir");
         System.setProperty("webdriver.chrome.driver", projectPath+ "/src/test/resources/Drivers/chromedriver.exe");
 
-
-        //System.setProperty("webdriver.gecko.driver", projectPath+ "/src/test/resources/Drivers/geckodriver.exe");
-        //  DesiredCapabilities capabilities = new DesiredCapabilities();
-
-        //capabilities.setCapability("marionette",true);  
-        //  WebDriver driver= new  FirefoxDriver();
-
-      //  driver = new ChromeDriver();
         driver = new ChromeDriver(options);
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -109,7 +102,9 @@ public class AmazonCartSteps {
     }
 
 
-    //Scenario 2
+    /**
+     * Scenario 2: Validate view product is working
+     */
 
     @Given("user has searched for a product")
     public void user_has_searched_for_a_product() {
@@ -147,7 +142,9 @@ public class AmazonCartSteps {
     }
 
 
-    //Scenario 4
+    /**
+     * Scenario 3: Validate add a product to cart is working
+     */
 
     @Given("user is on products page")
     public void user_is_on_products_page() {
@@ -219,7 +216,9 @@ public class AmazonCartSteps {
 
     }
 
-    //Scenario 5
+    /**
+     * Scenario 4: Validate searching another product is working
+     */
 
     @Given("user is on cart page")
     public void user_is_on_cart_page() {
@@ -236,7 +235,10 @@ public class AmazonCartSteps {
 
     }
 
-
+    /**
+     * Scenario 5: Validate adding another product to the cart is working
+     * @throws InterruptedException
+     */
 
     @And("observes the price of of one women hat")
     public void observes_the_price_of_one_women_hat() {
@@ -269,7 +271,6 @@ public class AmazonCartSteps {
         float actualCartTotal = (float) (Math.round((priceOfOneMenHat*2 + priceOfOneWomenHat)*100.0)/100.0);
 
         Assert.assertEquals(expectedCartTotal, actualCartTotal);
-        //Assert.assertEquals((priceOfOneMenHat*2 + priceOfOneWomenHat), expectedCartTotal);
 
         System.out.println("Expected SubTotal when cart has 2 men hats and 1 women hat : " + (priceOfOneMenHat*2 + priceOfOneWomenHat));
         System.out.println("Actual SubTotal when cart has 2 men hats and 1 women hat : " + cartSubTotal);
@@ -281,10 +282,8 @@ public class AmazonCartSteps {
     @And("assert the quantity in cart with two men and one women hat is correct")
     public void assert_the_quantity_in_cart_with_two_men_and_one_women_hat_is_correct() {
 
-        //product = new ProductPage(driver);
         cart = new CartViewPage(driver);
 
-        // float priceOfOneMenHat = product.getPriceFromProductsPage();
         int actualQuantity = cart.getQuantityInCart();
 
         System.out.println("Expected quantity in cart with two men and one women hat: " + "3");
@@ -296,8 +295,11 @@ public class AmazonCartSteps {
 
     }
 
+    /**
+     * Scenario 6: Validate removing one men hat from the cart is working
+     * @throws InterruptedException
+     */
 
-    // Scenario 6
 
     @When("user removes one men hat")
     public void user_removes_one_men_hat() throws InterruptedException {
